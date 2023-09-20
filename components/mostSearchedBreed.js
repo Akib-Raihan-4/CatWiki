@@ -1,3 +1,4 @@
+"use server"
 import React from 'react'
 import axios from 'axios'
 import Image from 'next/image'
@@ -15,7 +16,7 @@ async function catData() {
 export default async function MostSearchedBreed() {
   const catImage = await catData()
   return (
-    <div className='flex justify-between'>
+    <div className='flex justify-evenly'>
         {catImage.map((cat,index)=>(
           <img src={cat.url} key={index} className='w-[220px] h-[220px] rounded-[20px]' />
         ))}

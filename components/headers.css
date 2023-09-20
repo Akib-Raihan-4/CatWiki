@@ -1,9 +1,7 @@
-
-.arrow{
-    padding-left: 0px;
-    /* transition: all .8s ease-in-out; */
+.search{
+    overflow-y: auto;
 }
-.arrowHref .arrow:hover{
-    padding-left:4px;
-    transition: all .5s ease-in-out
+
+.search::-webkit-scrollbar{
+    width: 0em;
 }
