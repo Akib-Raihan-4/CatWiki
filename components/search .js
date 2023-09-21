@@ -3,13 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { BiSearch } from 'react-icons/bi';
 import axios from 'axios';
 import './headers.css';
+import { db } from './firebase';
+import { doc, setDoc, updateDoc, getDoc } from 'firebase/firestore';
 
 export const Search = () => {
   const [inputValue, setInputValue] = useState('');
   const [breedSuggestions, setBreedSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
-  
 
   useEffect(() => {
     async function fetchBreeds() {
@@ -32,52 +33,29 @@ export const Search = () => {
     // Get the breed ID from the suggestion
     const breedId = suggestion.id;
   
-    if (suggestion.name && breedId) {
-      const databaseUrl = `https://catbreed-96dbf-default-rtdb.asia-southeast1.firebasedatabase.app/breedData/${breedId}.json`;
+    // Define a reference to the breed document
+    const breedDocRef = doc(db, 'breedSearchCounts', breedId);
   
-      try {
-        // Fetch the existing data from the database
-        const existingDataResponse = await fetch(databaseUrl);
-        if (existingDataResponse.ok) {
-          const existingData = await existingDataResponse.json();
+    // Use getDoc to retrieve the document
+    const docSnapshot = await getDoc(breedDocRef);
   
-          // Get the current count or default to 0
-          const currentCount = existingData?.count || 0;
+    if (docSnapshot.exists()) {
+      // Document exists, get the current count
+      const currentCount = docSnapshot.data().count;
   
-          // Update the count
-          const updatedCount = currentCount + 1;
-  
-          // Send a PATCH request to update the count in the database
-          const res = await fetch(databaseUrl, {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              count: updatedCount, // Update the count
-            }),
-          });
-  
-          if (res.ok) {
-            // Data updated successfully
-            // You can handle success here
-          } else {
-            // Handle errors here
-            console.error("Failed to update data");
-          }
-        } else {
-          // Handle errors here
-          console.error("Failed to fetch existing data");
-        }
-      } catch (error) {
-        console.error("Error updating data:", error);
-      }
+      // Use updateDoc to increment the count
+      await updateDoc(breedDocRef, {
+        count: currentCount + 1, // Increment the count
+      });
+    } else {
+      // Document does not exist, create it with count 1
+      await setDoc(breedDocRef, {
+        count: 1,
+      });
     }
   
     setShowSuggestions(false);
   };
-  
-  
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -110,7 +88,7 @@ export const Search = () => {
         </div>
       </div>
 
-      {showSuggestions && filteredSuggestions.length > 0 && (
+      {showSuggestions && breedSuggestions.length > 0 && (
         <div className='mt-24 bg-white text-black w-[80%] max-h-[200px] h-fit search rounded-[30px]'>
           <ul className="suggestion-list">
             {filteredSuggestions.map((suggestion, index) => (

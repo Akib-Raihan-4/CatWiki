@@ -1,24 +1,55 @@
-"use server"
-import React from 'react'
-import axios from 'axios'
-import Image from 'next/image'
+"use client"
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import Image from 'next/image';
+import { getTopSearchedBreeds } from './getTopSearchedBreeds'; // Import the function to fetch top breeds
 
-async function catData() {
-  try{
-    const res = await axios.get("https://api.thecatapi.com/v1/images/search?limit=4&api_key=live_AvpOFJQDCN1uusCORCQivt7Yl3ErSTJ5Sg5zRXbX26MHHUEPoN4KZ2KGaEV14q1C")
-    // console.log(res)
-    return res.data
-  }catch(err){
-    console.log({Message:"Could not fetch data"})
+export default function MostSearchedBreed() {
+  const [topBreeds, setTopBreeds] = useState([]);
+  const [topBreedImages, setTopBreedImages] = useState([])
+
+  useEffect(() => {
+    async function fetchTopBreedsAndImages() {
+      const topSearchedBreeds = await getTopSearchedBreeds();
+      // console.log(topSearchedBreeds)
+      const breedImages = await fetchBreedImages(topSearchedBreeds);
+
+      // Assuming fetchBreedImages is a function that fetches breed images based on breed names
+      setTopBreeds(breedImages);
+    }
+    fetchTopBreedsAndImages();
+  }, []);
+
+  async function fetchBreedImages(breeds) {
+    const newTopBreedImages = []
+    for (const breed of breeds) 
+    {
+      try 
+      {
+        // console.log(breed.breedID)
+        const res = await axios.get(`https://api.thecatapi.com/v1/images/search?limit=1&breed_ids=${breed.breedID}&api_key=live_AvpOFJQDCN1uusCORCQivt7Yl3ErSTJ5Sg5zRXbX26MHHUEPoN4KZ2KGaEV14q1C`);
+        const breedName = res.data[0].breeds[0].name
+        const imageUrl = res.data[0].url
+
+        const breedImages={
+          breedName,
+          imageUrl
+        }
+        newTopBreedImages.push(breedImages)
+        }catch(err){
+          console.log({Message:"Could not fetch data"})
+      }
+    }
+    setTopBreedImages(newTopBreedImages)
   }
-}
-
-export default async function MostSearchedBreed() {
-  const catImage = await catData()
+  console.log(topBreedImages)
   return (
-    <div className='flex justify-evenly'>
-        {catImage.map((cat,index)=>(
-          <img src={cat.url} key={index} className='w-[220px] h-[220px] rounded-[20px]' />
+    <div className='max-w-[1280px] grid grid-cols-4 mx-auto mt-14 gap-16'>
+        {topBreedImages.map((cat,index)=>(
+          <div className='flex flex-col justify-center w-fit h-fit'>
+            <img src={cat.imageUrl} key={index} className='w-[220px] h-[220px] rounded-[20px]'/>
+            <p className="[font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-[#291507] text-[18px] mt-4 mb-36 h-fit">{cat.breedName}</p>
+          </div>
         ))}
     </div>
   )
