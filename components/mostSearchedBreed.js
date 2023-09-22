@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Image from 'next/image';
+
 import { getTopSearchedBreeds } from './getTopSearchedBreeds'; // Import the function to fetch top breeds
 
 export default function MostSearchedBreed() {
@@ -47,8 +47,8 @@ export default function MostSearchedBreed() {
     <div className='max-w-[1280px] grid grid-cols-4 mx-auto mt-14 gap-16'>
         {topBreedImages.map((cat,index)=>(
           <div className='flex flex-col justify-center w-fit h-fit'>
-            <img src={cat.imageUrl} key={index} className='w-[220px] h-[220px] rounded-[20px]'/>
-            <p className="[font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-[#291507] text-[18px] mt-4 mb-36 h-fit">{cat.breedName}</p>
+            <img src={cat.imageUrl} key={index} className='w-[220px] h-[220px] rounded-[20px] shadow-[10px_10px_10px_5px_rgba(0,0,0,0.5)]'/>
+            <p className="[font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-[#291507] text-[18px] mt-4 mb-32 h-fit">{cat.breedName}</p>
           </div>
         ))}
     </div>

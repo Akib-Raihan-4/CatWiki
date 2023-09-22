@@ -11,7 +11,7 @@ export default function Header() {
         <Image src="CatwikiLogo.svg" alt='catLogo' width={140} height={100} className='py-[20px]'/>
         {/* h-[620px] */}
         <div className='relative '>
-            <Image src='/HeroImagelg.png' width={1440} height={0} className='rounded-t-[35px]'/>
+            <Image src='/HeroImagelg.png' width={1440} height={100} className='rounded-t-[35px] h-[550px]'/>
 
             <div className='absolute top-28 left-24 text-white'>
                 <Image src="CatwikiLogo.svg" alt='catLogo' width={300} height={100} className=' invert contrast-[150%] mb-3'/>
