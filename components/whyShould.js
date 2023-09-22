@@ -4,9 +4,10 @@ import Image from 'next/image'
 
 export const WhyShould = () => {
   return (
-    <div className="mt-28">
+    <div className="my-28">
         <div className="max-w-[1280px] mx-auto flex">
-            <div className='w-[455px] mt-24 mr-44'>
+            <div className='w-[455px] mt-20 mr-48'>
+                <div className="w-[67px] h-[3px] bg-[#4d270c] rounded-[77px] mb-4"/>
                 <h1 className="[font-family:'Montserrat-Bold',Helvetica] font-bold text-[#291506] text-[48px] tracking-[0px] leading-[55px]">
                     Why should you have a cat ?
                 </h1>
