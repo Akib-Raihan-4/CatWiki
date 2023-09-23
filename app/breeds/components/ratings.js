@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StarRating = ({ rating }) => {
+export const Ratings = ({ rating }) => {
   const filledStars = Math.floor(rating);
   const hasHalfStar = rating - filledStars >= 0.5;
 

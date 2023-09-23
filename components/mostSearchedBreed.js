@@ -50,19 +50,20 @@ export default function MostSearchedBreed() {
   return (
     <div className='max-w-[1280px] grid grid-cols-4 mx-auto mt-14 gap-16'>
         {topBreedImages.map((cat,index)=>(
-          <Link
-          href = {{
-            pathname: '/breeds/',
-            query: {
-              id: cat.breedID
-            }
-          }}
-          >
-            <div className='flex flex-col justify-center w-fit h-fit'>
+          <div className='flex flex-col justify-center w-fit h-fit'>
+            <Link
+              href = {{
+                pathname: '/breeds/',
+                query: {
+                  id: cat.breedID
+                }
+              }}
+            >
               <img src={cat.imageUrl} key={index} className='w-[220px] h-[220px] rounded-[20px] shadow-[10px_10px_10px_5px_rgba(0,0,0,0.5)]'/>
-              <p className="[font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-[#291507] text-[18px] mt-4 mb-32 h-fit">{cat.breedName}</p>
-            </div>
-          </Link>
+            </Link>
+            <p className="[font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-[#291507] text-[18px] mt-4 mb-32 h-fit">{cat.breedName}</p>
+          </div>
+         
         ))}
     </div>
   )
