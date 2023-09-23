@@ -2,35 +2,25 @@ import React, { useEffect, useState } from 'react';
 
 const StarRating = ({ rating }) => {
   const filledStars = Math.floor(rating);
-  const hasHalfStar = rating - filledStars >= 0.5;
+
 
   const stars = [];
 
   for (let i = 0; i < filledStars; i++) {
     stars.push(
-      <span key={i} className="star filled-star">
-        &#9733; {/* Filled star character */}
-      </span>
+      <div key={i} className="w-[60px] h-[12px] bg-[#544439] rounded-[8px] "/>
     );
   }
 
-  if (hasHalfStar) {
-    stars.push(
-      <span key="half" className="star half-star">
-        &#9733;&#189; {/* Half star character */}
-      </span>
-    );
-  }
+  
 
   while (stars.length < 5) {
     stars.push(
-      <span key={stars.length} className="star unfilled-star">
-        &#9734; {/* Unfilled star character */}
-      </span>
+      <div key={stars.length} className="w-[60px] h-[12px] bg-[#e0e0e0] rounded-[8px] "/>
     );
   }
 
-  return <span className="star-rating">{stars}</span>;
+  return <div className="flex gap-7">{stars}</div>;
 };
 
 export const CatBreed = ({ breedID }) => {
@@ -96,21 +86,39 @@ export const CatBreed = ({ breedID }) => {
                 {catImages[0].breeds[0].life_span} years
               </span>
             </p>
-            <p className="[font-family:'Montserrat-Bold',Helvetica] font-normal text-black text-[16px] mb-6">
-              <span className="font-bold">Adaptibility: </span>
+
+            {/* Bars are here */}
+            <p className="[font-family:'Montserrat-Bold',Helvetica] font-normal text-black text-[16px] mb-6 flex">
+              <span className="font-bold block w-[180px]">Adaptibility: </span>
               <StarRating rating={catImages[0].breeds[0].adaptability}/>
             </p>
-            <p className="[font-family:'Montserrat-Bold',Helvetica] font-normal text-black text-[16px] mb-6">
-              <span className="font-bold">Affection level: </span>
+            <p className="[font-family:'Montserrat-Bold',Helvetica] font-normal text-black text-[16px] mb-6 flex">
+              <span className="font-bold block w-[180px]">Affection level: </span>
               <StarRating rating={catImages[0].breeds[0].affection_level}/>
             </p>
-            <p className="[font-family:'Montserrat-Bold',Helvetica] font-normal text-black text-[16px] mb-6">
-              <span className="font-bold">Affection level: </span>
+            <p className="[font-family:'Montserrat-Bold',Helvetica] font-normal text-black text-[16px] mb-6 flex">
+              <span className="font-bold block w-[180px]">Child Friendly: </span>
               <StarRating rating={catImages[0].breeds[0].child_friendly}/>
             </p>
-            <p className="[font-family:'Montserrat-Bold',Helvetica] font-normal text-black text-[16px] mb-6">
-              <span className="font-bold">Affection level: </span>
+            <p className="[font-family:'Montserrat-Bold',Helvetica] font-normal text-black text-[16px] mb-6 flex">
+              <span className="font-bold block w-[180px]">Grooming: </span>
               <StarRating rating={catImages[0].breeds[0].grooming}/>
+            </p>
+            <p className="[font-family:'Montserrat-Bold',Helvetica] font-normal text-black text-[16px] mb-6 flex">
+              <span className="font-bold block w-[180px]">Intelligent: </span>
+              <StarRating rating={catImages[0].breeds[0].intelligence}/>
+            </p>
+            <p className="[font-family:'Montserrat-Bold',Helvetica] font-normal text-black text-[16px] mb-6 flex">
+              <span className="font-bold block w-[180px]">Health issues: </span>
+              <StarRating rating={catImages[0].breeds[0].health_issues}/>
+            </p>
+            <p className="[font-family:'Montserrat-Bold',Helvetica] font-normal text-black text-[16px] mb-6 flex">
+              <span className="font-bold block w-[180px]">Social needs: </span>
+              <StarRating rating={catImages[0].breeds[0].social_needs}/>
+            </p>
+            <p className="[font-family:'Montserrat-Bold',Helvetica] font-normal text-black text-[16px] mb-6 flex">
+              <span className="font-bold block w-[180px]">Stranger friendly: </span>
+              <StarRating rating={catImages[0].breeds[0].stranger_friendly}/>
             </p>
 
           </div>
