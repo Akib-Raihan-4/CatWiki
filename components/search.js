@@ -5,6 +5,8 @@ import axios from 'axios';
 import './headers.css';
 import { db } from './firebase';
 import { doc, setDoc, updateDoc, getDoc } from 'firebase/firestore';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link'
 
 export const Search = () => {
   const [inputValue, setInputValue] = useState('');
@@ -26,9 +28,10 @@ export const Search = () => {
 
     fetchBreeds();
   }, []);
-
+  const router = useRouter();
   const handleSuggestionClick = async (suggestion) => {
     setInputValue(suggestion.name);
+    
   
     // Get the breed ID from the suggestion
     const breedId = suggestion.id;
@@ -55,6 +58,7 @@ export const Search = () => {
     }
   
     setShowSuggestions(false);
+   
   };
 
   const handleInputChange = (e) => {
@@ -92,13 +96,25 @@ export const Search = () => {
         <div className='mt-24 bg-white text-black w-[80%] max-h-[200px] h-fit search rounded-[30px]'>
           <ul className="suggestion-list">
             {filteredSuggestions.map((suggestion, index) => (
-              <li
-                key={index}
-                onClick={() => handleSuggestionClick(suggestion)}
-                className="cursor-pointer p-2 hover:bg-gray-200"
+              <Link
+              href = {{
+                pathname: '/breeds/',
+                query: {
+                  id: suggestion.id
+                }
+              }}
+              className='w-[100%] bg-black'
               >
-                {suggestion.name}
-              </li>
+                <li
+                  key={index}
+                  onClick={() => handleSuggestionClick(suggestion)}
+                  className="cursor-pointer p-2 hover:bg-gray-200"
+                >
+                  
+                    {suggestion.name}
+                  
+                </li>
+              </Link>
             ))}
           </ul>
         </div>
