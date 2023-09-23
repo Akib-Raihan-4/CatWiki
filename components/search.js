@@ -77,16 +77,16 @@ export const Search = () => {
 
   return (
     <>
-      <div className='text-black w-[80%] mt-8 bg-white'>
+      <div className='text-black w-[80%] sm:mt-8 mt-4 bg-white'>
         <div className="relative">
           <input
             type="text"
-            placeholder="Enter your breed"
-            className='absolute w-full rounded-[50px] h-[50px]'
+            placeholder="Search Breeds"
+            className='absolute w-full rounded-[50px] sm:h-[50px] h-[41px]'
             value={inputValue}
             onChange={handleInputChange}
           />
-          <button className='text-black absolute right-4 top-0 bottom-0 translate-y-4'>
+          <button className='text-black absolute sm:right-4 right-2 sm:top-0 sm:bottom-0 sm:translate-y-4 translate-y-3'>
             <BiSearch size={20} />
           </button>
         </div>

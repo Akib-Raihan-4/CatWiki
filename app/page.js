@@ -6,7 +6,7 @@ import { Nav } from '@/components/nav'
 
 export default function Home() {
   return (
-    <div className='w-[1440px] mx-auto '>
+    <div className='sm:w-[1440px] mx-auto w-screen'>
       
       <Header/>
       <WhyShould/>
