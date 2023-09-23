@@ -23,6 +23,9 @@ const StarRating = ({ rating }) => {
   return <div className="flex gap-7">{stars}</div>;
 };
 
+
+
+
 export const CatBreed = ({ breedID }) => {
   const [catImages, setCatImages] = useState([]);
 

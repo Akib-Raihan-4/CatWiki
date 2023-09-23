@@ -103,7 +103,6 @@ export const Search = () => {
                   id: suggestion.id
                 }
               }}
-              className='w-[100%] bg-black'
               >
                 <li
                   key={index}
