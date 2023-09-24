@@ -14,7 +14,7 @@ export const WhyShould = () => {
                 <p className="sm:w-[395px] w-[100%] [font-family:'Montserrat-Medium',Helvetica] font-medium text-[#291507] text-[18px] tracking-[0] leading-normal sm:my-14  mt-16">
                 Having a cat around you can actually trigger the release of calming chemicals in your body which lower your stress and anxiety leves.
                 </p>
-                <a className='flex items-end ' href='https://www.freshpet.com/blog/10-reasons-why-cats-make-great-pets'>
+                <a className='flex items-end ' href='https://www.freshpet.com/blog/10-reasons-why-cats-make-great-pets' target='blank'>
                     <p className="[font-family:'Montserrat-Bold',Helvetica] font-semibold text-[#29150799] text-[18px] pr-2 mt-6 sm:mt-0">READ MORE </p>
                     <FaLongArrowAltRight color='#29150799' size={28}  />
                 </a>
