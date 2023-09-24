@@ -20,8 +20,8 @@ export const WhyShould = () => {
                 </a>
             </div>
             <div className="sm:w-[580px] w-full columns-2 mt-20 sm:mt-0">
-                <Image src="/image2.png" width={1000} height={1000} className='sm:w-[274px] sm:h-[167.084px]  w-[272px] h-[130px] mb-6'/>
-                <Image src="/image1.png" width={1000} height={1000} className='sm:w-[195.5px] sm:h-[294px] w-[143px] h-[220px] sm:ml-[75px] ml-[42px]'/>
+                <Image src="/image2.png" width={1000} height={1000} className='sm:w-[274px] sm:h-[167.084px]  w-[272px] h-[130px] sm:mb-6 mb-[14px]'/>
+                <Image src="/image1.png" width={1000} height={1000} className='sm:w-[195.5px] sm:h-[294px] w-[143px] h-[220px] sm:ml-[75px] ml-[34px]'/>
                 <Image src="/image3.png" width={1000} height={1000} className='sm:w-[238.471px] sm:h-[385.868px] w-[186px] h-[300px]'/>
             </div>
         </div>
