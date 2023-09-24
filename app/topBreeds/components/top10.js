@@ -48,17 +48,17 @@ export const Top10 = () => {
     console.log(topBreedImages)
   }
   return (
-    <div className='max-w-[1440px]  mx-auto'>
+    <div className='sm:w-[1440px] mx-auto w-[100%]'>
         <p className="[font-family:'Montserrat-Bold',Helvetica] font-bold text-[#291507] text-[36px] mt-10 mb-20">
         Top 10 most searched breeds
       </p>
         {topBreedImages.map((cat,index)=>(
-          <div className='flex gap-28 mb-14'>
+          <div className='sm:flex sm:gap-28 sm:mb-14 mb-10'>
             {/* {console.log(index+1)} */}
             <img src={cat.imageUrl} key={index} className='min-w-[170px] max-w-[170px] h-[170px] rounded-[20px] object-cover shadow-[10px_10px_10px_5px_rgba(0,0,0,0.5)]'/>
-            <div className="flex flex-col">
-                <h1 className="[font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-[#291507] text-[36px]">{index+1}.{" "}{cat.breedName}</h1>
-                <p className="w-[888px] [font-family:'Montserrat-Medium',Helvetica] font-medium text-[#291507] text-[18px]">{cat.breedDescription}</p>
+            <div className="flex flex-col mt-10 sm:mt-0">
+                <h1 className="[font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-[#291507] sm:text-[36px] text-[26px]">{index+1}.{" "}{cat.breedName}</h1>
+                <p className="sm:w-[888px] w-full [font-family:'Montserrat-Medium',Helvetica] font-medium text-[#291507] text-[18px]">{cat.breedDescription}</p>
             </div>
           </div>
          
