@@ -287,7 +287,7 @@ export const Search = () => {
   return (
     <>
         
-            {isMobile ? <MobileSearch /> : <DesktopSearch/>}
+      {isMobile ? <MobileSearch /> : <DesktopSearch/>}
         
     </>
 
