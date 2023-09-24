@@ -8,7 +8,7 @@ const Breeds = () => {
   const search = searchParams.get('id')
   console.log(search)
   return (
-    <div className="w-[1440px] mx-auto">
+    <div className="sm:w-[1440px] mx-auto w-[95%]">
         <CatBreed breedID={search}/>
     </div>
   )

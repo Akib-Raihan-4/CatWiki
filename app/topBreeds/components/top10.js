@@ -31,7 +31,6 @@ export const Top10 = () => {
         const imageUrl = res.data[0].url
         const breedID = res.data[0].breeds[0].id
         const breedDescription = res.data[0].breeds[0].description
-        
 
         const breedImages={
           breedID,
