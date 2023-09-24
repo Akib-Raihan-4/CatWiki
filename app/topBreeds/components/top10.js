@@ -58,7 +58,7 @@ export const Top10 = () => {
             <img src={cat.imageUrl} key={index} className='min-w-[170px] max-w-[170px] h-[170px] rounded-[20px] object-cover shadow-[10px_10px_10px_5px_rgba(0,0,0,0.5)]'/>
             <div className="flex flex-col mt-10 sm:mt-0">
                 <h1 className="[font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-[#291507] sm:text-[36px] text-[26px]">{index+1}.{" "}{cat.breedName}</h1>
-                <p className="sm:w-[888px] w-full [font-family:'Montserrat-Medium',Helvetica] font-medium text-[#291507] text-[18px] sm:mt-2 mt-0">{cat.breedDescription}</p>
+                <p className="sm:w-[888px] w-full [font-family:'Montserrat-Medium',Helvetica] font-medium text-[#291507] text-[18px] sm:mt-0 mt-2">{cat.breedDescription}</p>
             </div>
           </div>
          
