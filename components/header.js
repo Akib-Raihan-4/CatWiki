@@ -11,7 +11,6 @@ export default function Header() {
         {/* h-[620px] */}
         <div className='relative '>
             <Image src='/HeroImagelg.png' width={1440} height={100} className='rounded-t-[35px] sm:h-[550px] sm:w-[1440px] w-screen h-[200px] mx-auto'/>
-
             <div className='absolute sm:top-28 sm:left-24 top-4 left-5 text-white'>
                 <Image src="CatwikiLogo.svg" alt='catLogo' width={300} height={100} className=' invert contrast-[150%] mb-3 sm:w-[300px] sm:h-[100px] w-[150px] h-[50px]'/>
                 <p className="max-w-[80%] [font-family:'Montserrat-Medium',Helvetica] font-medium text-white sm:text-[27px] text-[12px]">Get to know more about your cat breed</p>
