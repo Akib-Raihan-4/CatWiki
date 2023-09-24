@@ -5,3 +5,12 @@
 .search::-webkit-scrollbar{
     width: 0em;
 }
+
+.icon{
+    font-size: 28px;
+}
+@media (max-width: 767px) {
+    .icon {
+      font-size: 20px; /* Change the size to your desired value for mobile */
+    }
+}
